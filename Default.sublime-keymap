@@ -1,8 +1,8 @@
 [
-  {"keys": ["i"], "command": "insert_mode", "context": [{"key": "setting.command_mode"}]},
-  {"keys": ["a"], "command": "insert_mode_append", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["i"], "command": "meow_insert_mode", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["a"], "command": "meow_insert_mode_append", "context": [{"key": "setting.command_mode"}]},
 
-  // character movements
+  // character
   {"keys": ["h"], "command": "move", "context": [{"key": "setting.command_mode"}],
    "args": {"by": "characters", "forward": false}},
   {"keys": ["t"], "command": "move", "context": [{"key": "setting.command_mode"}],
@@ -11,8 +11,6 @@
    "args": {"by": "lines", "forward": false}},
   {"keys": ["n"], "command": "move",  "context": [{"key": "setting.command_mode"}],
    "args": {"by": "lines", "forward": true}},
-
-  // character expand
   {"keys": ["H"], "command": "move", "context": [{"key": "setting.command_mode"}],
    "args": {"by": "characters", "forward": false, "extend": true}},
   {"keys": ["T"], "command": "move", "context": [{"key": "setting.command_mode"}],
@@ -22,6 +20,32 @@
   {"keys": ["N"], "command": "move",  "context": [{"key": "setting.command_mode"}],
    "args": {"by": "lines", "forward": true, "extend": true}},
 
+  // word
+  {"keys": ["w"], "command": "meow_next_word", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["b"], "command": "meow_prev_word", "context": [{"key": "setting.command_mode"}]},
+
+  // line 
+  {"keys": ["e"], "command": "expand_selection", "context": [{"key": "setting.command_mode"}],
+   "args": {"to": "line"}},
+
+  // deletion
+  {"keys": ["d"], "command": "right_delete", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["k"], "command": "cut", "context": [{"key": "setting.command_mode"}]},
+
+  // copy & paste
+  {"keys": ["x"], "command": "copy", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["y"], "command": "paste", "context": [{"key": "setting.command_mode"}]},
+
+  // undo & redo
+  {"keys": ["u"], "command": "undo", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["U"], "command": "redo", "context": [{"key": "setting.command_mode"}]},
+
   // escape
-  {"keys": ["escape"], "command": "command_mode", "context": [{"key": "setting.is_widget", "operator": "equal", "operand": false}]}
+  {"keys": ["escape"], "command": "meow_command_mode", 
+    "context": [{"key": "setting.is_widget", "operator": "equal", "operand": false}]},
+  {"keys": ["escape"], "command": "single_selection",
+    "context": [
+      {"key": "num_selections", "operator": "not_equal", "operand": 1},
+      {"key": "setting.command_mode"}
+    ]},
 ]

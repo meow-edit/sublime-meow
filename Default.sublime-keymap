@@ -1,0 +1,27 @@
+[
+  {"keys": ["i"], "command": "insert_mode", "context": [{"key": "setting.command_mode"}]},
+  {"keys": ["a"], "command": "insert_mode_append", "context": [{"key": "setting.command_mode"}]},
+
+  // character movements
+  {"keys": ["h"], "command": "move", "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "characters", "forward": false}},
+  {"keys": ["t"], "command": "move", "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "characters", "forward": true}},
+  {"keys": ["p"], "command": "move", "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "lines", "forward": false}},
+  {"keys": ["n"], "command": "move",  "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "lines", "forward": true}},
+
+  // character expand
+  {"keys": ["H"], "command": "move", "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "characters", "forward": false, "extend": true}},
+  {"keys": ["T"], "command": "move", "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "characters", "forward": true, "extend": true}},
+  {"keys": ["P"], "command": "move", "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "lines", "forward": false, "extend": true}},
+  {"keys": ["N"], "command": "move",  "context": [{"key": "setting.command_mode"}],
+   "args": {"by": "lines", "forward": true, "extend": true}},
+
+  // escape
+  {"keys": ["escape"], "command": "command_mode", "context": [{"key": "setting.is_widget", "operator": "equal", "operand": false}]}
+]
